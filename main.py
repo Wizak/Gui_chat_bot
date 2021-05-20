@@ -17,17 +17,11 @@ def check_chat_activity(control_image):
         control_pixel[int(x + 16), int(y - 25)] == (255, 255, 255)
     ]
 
-    if all(checking):
-        return True
-    else:
-        return False
+    return all(checking)
 
 
 def check_window_activity():
-    if 'Telegram' in pyautogui.getActiveWindowTitle():
-        return True
-    else:
-        return False
+    return 'Telegram' in pyautogui.getActiveWindowTitle()
 
 
 def message_region(etalon):
@@ -92,7 +86,7 @@ def message_send(control_image, answer):
         pyperclip.copy(text)
         press_and_release('ctrl + v')
 
-    def type(text: str, interval=0.0):    
+    def type(text: str, interval=0):    
         buffer = pyperclip.paste()
         if not interval:
             paste(text)
